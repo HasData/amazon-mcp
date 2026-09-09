@@ -1,0 +1,41 @@
+{
+  "name": "@hasdata/amazon-mcp",
+  "mcpName": "com.hasdata/amazon",
+  "version": "1.0.0",
+  "description": "MCP server for Amazon through HasData's hosted API: keyword search, product details, seller storefronts and their catalogues. No Amazon developer account. 1,000 free credits every month.",
+  "type": "module",
+  "bin": {
+    "hasdata-amazon-mcp": "index.mjs"
+  },
+  "files": [
+    "index.mjs",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "mcp-remote": "^0.1.43"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HasData/amazon-mcp.git"
+  },
+  "homepage": "https://hasdata.com/apis/amazon-api",
+  "keywords": [
+    "mcp",
+    "amazon",
+    "amazon-mcp",
+    "ecommerce",
+    "product-data",
+    "asin",
+    "model-context-protocol",
+    "hasdata",
+    "scraper"
+  ]
+}
