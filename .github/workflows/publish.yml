@@ -5,12 +5,12 @@
 #
 # One-time setup, done once per package on the registries (not in this repo):
 #   npmjs.org  -> package settings -> Trusted Publisher -> GitHub Actions,
-#                 repo HasData/zillow-mcp, workflow publish.yml
+#                 repo HasData/amazon-mcp, workflow publish.yml
 #   pypi.org   -> the hasdata org -> Publishing -> add a trusted publisher
 #                 (pending publisher works before the first release),
-#                 repo HasData/zillow-mcp, workflow publish.yml
+#                 repo HasData/amazon-mcp, workflow publish.yml
 #
-# The MCP registry entry (com.hasdata/zillow) is NOT published here. It uses
+# The MCP registry entry (com.hasdata/amazon) is NOT published here. It uses
 # domain auth, which would need the namespace-wide Ed25519 key as a secret in
 # every repo. That key stays off CI; the registry entry is published by hand
 # when server.json changes, after the package versions below are live.
