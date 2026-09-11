@@ -1,0 +1,24 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "hasdata-amazon-mcp",
+  "version": "1.0.0",
+  "description": "Amazon MCP server for Cursor. Keyword search, product details by ASIN, product reviews, seller profiles and seller catalogues across Amazon marketplaces, as structured JSON. Remote MCP server hosted by HasData, connects over streamable HTTP with your HasData API key.",
+  "author": {
+    "name": "HasData",
+    "url": "https://hasdata.com"
+  },
+  "homepage": "https://hasdata.com/apis/amazon-api",
+  "repository": "https://github.com/HasData/amazon-mcp",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "amazon",
+    "amazon-mcp",
+    "ecommerce",
+    "product-data",
+    "asin",
+    "model-context-protocol",
+    "hasdata",
+    "scraper"
+  ]
+}
