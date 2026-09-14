@@ -167,13 +167,13 @@ A prompt that names a product rather than an ASIN takes two calls, one search to
 
 ## Tools
 
-| Tool | Credits | What it returns |
-| :--- | :--- | :--- |
-| `hasdata_amazon_product_getProductDetails` | 5 | Title, brand, current/list/deal price, currency, availability, Buy Box seller, Prime eligibility, bullet points, A+ description, rating and review count, images,… |
-| `hasdata_amazon_reviews_getProductReviews` | 5 | Per-review title, body, star rating, author name and profile, review date, country, verified-purchase flag, helpful-vote count, variant/format attributes, and attached… |
-| `hasdata_amazon_search_getSearchResults` | 5 | The organic results list with ASIN, title, thumbnail, product URL, price and list price, currency, star rating, review count, Prime/sponsored flags, and position, plus… |
-| `hasdata_amazon_seller_getSellerDetails` | 5 | Business name, seller logo, About-this-seller text, overall feedback rating and lifetime/12-month/90-day/30-day rating breakdown, feedback count, business address and… |
-| `hasdata_amazon_seller_products_getSellerProducts` | 5 | Each product row with ASIN, title, image, product URL, price and list price, currency, star rating, review count, and Prime flag |
+| Tool | What it returns |
+| --- | --- |
+| `hasdata_amazon_product_getProductDetails` | Title, brand, current/list/deal price, currency, availability, Buy Box seller, Prime eligibility, bullet points, A+ description, rating and review count, images,…. 5 credits a call |
+| `hasdata_amazon_reviews_getProductReviews` | Per-review title, body, star rating, author name and profile, review date, country, verified-purchase flag, helpful-vote count, variant/format attributes, and attached…. 5 credits a call |
+| `hasdata_amazon_search_getSearchResults` | The organic results list with ASIN, title, thumbnail, product URL, price and list price, currency, star rating, review count, Prime/sponsored flags, and position, plus…. 5 credits a call |
+| `hasdata_amazon_seller_getSellerDetails` | Business name, seller logo, About-this-seller text, overall feedback rating and lifetime/12-month/90-day/30-day rating breakdown, feedback count, business address and…. 5 credits a call |
+| `hasdata_amazon_seller_products_getSellerProducts` | Each product row with ASIN, title, image, product URL, price and list price, currency, star rating, review count, and Prime flag. 5 credits a call |
 
 Five tools, 5 credits per successful call. Every tool accepts `domain` to switch marketplace, one of 23 values, `www.amazon.com` through the European, Asian and other regional marketplaces, and `language` where the marketplace offers more than one.
 
