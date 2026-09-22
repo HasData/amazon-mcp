@@ -1,0 +1,22 @@
+---
+description: How to pull Amazon search, product, review and seller data through the HasData MCP server
+alwaysApply: false
+---
+
+# Amazon through HasData
+
+Five tools. `amazon_search_getSearchResults` takes a query, the other four take an identifier: `asin` for a product or its reviews, `sellerId` for a seller or that seller's catalogue.
+
+## Identifiers are marketplace-scoped
+
+`domain` decides which Amazon you are reading, and an ASIN that exists on `www.amazon.com` often does not exist on `www.amazon.de`. The same goes for a seller id. When a lookup fails, check the domain before you decide the item is gone.
+
+## Destination changes the answer
+
+`deliveryZip` and `shippingLocation` shift availability, price and the seller mix, not just the delivery line. A price comparison across locations is only honest if you pass the location deliberately and say which one you used.
+
+## Reading the payload
+
+A search that matches nothing returns a successful result with an empty `productResults` array, so branch on length rather than waiting for an error. A live listing can come back without a usable `currentPrice` when the item is out of stock or sold only through other sellers, so treat the price as optional and say so instead of printing zero.
+
+The reviews tool pages and filters: `stars`, `reviewerType`, `mediaType` and `sortBy` narrow the set at no extra cost, which beats pulling everything and filtering afterwards.
