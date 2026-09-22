@@ -3,7 +3,7 @@
   "name": "com.hasdata/amazon",
   "title": "HasData Amazon",
   "description": "Amazon keyword search, product details, seller profiles and seller catalogues, as structured JSON.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "websiteUrl": "https://hasdata.com/apis/amazon-api",
   "repository": {
     "url": "https://github.com/HasData/amazon-mcp",
@@ -27,7 +27,7 @@
     {
       "registryType": "npm",
       "identifier": "@hasdata/amazon-mcp",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "transport": {
         "type": "stdio"
       },
@@ -43,7 +43,7 @@
     {
       "registryType": "pypi",
       "identifier": "hasdata-amazon-mcp",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"
