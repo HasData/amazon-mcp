@@ -313,9 +313,9 @@ Each Amazon tool costs **5 credits per successful call**. Turning on `otherSelle
 
 The free tier is **1,000 credits every month with no card**, which is 200 Amazon calls at the base rate. It renews with the billing cycle, so a low-volume agent runs on the free tier indefinitely.
 
-Paid plans start at **$49 a month** for 200,000 credits, which is 40,000 calls. The unit price falls with volume, from **$1.23 per 1,000 calls** on the entry plan to **$0.50** on Business, **$0.42** on Growth and **$0.37** on the largest [high-volume plans](https://hasdata.com/prices?utm_source=github&utm_medium=syndication&utm_campaign=amazon-mcp).
+Paid plans start at **$59 a month** for 200,000 credits, which is 40,000 calls. The unit price falls with volume, from **$1.48 per 1,000 calls** on the entry plan to **$0.60** on Basic and **$0.41** across the Growth tiers. Current figures live on the [pricing page](https://hasdata.com/prices?utm_source=github&utm_medium=syndication&utm_campaign=amazon-mcp).
 
-Your plan also sets concurrency. The free tier allows 1 request at a time, Startup 15, Business 30, Growth 50, and the high-volume plans run from 200 to 1,500. Retry on the 429 with a backoff in anything unattended, because an agent that fans out across ASINs will reach the ceiling before you do.
+Your plan also sets concurrency. The free tier allows 1 request at a time, Startup 5, Basic 15, and the Growth tiers run from 50 to 500. Retry on the 429 with a backoff in anything unattended, because an agent that fans out across ASINs will reach the ceiling before you do.
 
 A request that comes back non-200 is not billed. A successful call that finds nothing is still a call.
 
