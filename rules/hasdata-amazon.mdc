@@ -5,7 +5,7 @@ alwaysApply: false
 
 # Amazon through HasData
 
-Five tools. `amazon_search_getSearchResults` takes a query, the other four take an identifier: `asin` for a product or its reviews, `sellerId` for a seller or that seller's catalogue.
+Five tools. `hasdata_amazon_search_getSearchResults` takes a query, the other four take an identifier: `asin` for a product or its reviews, `sellerId` for a seller or that seller's catalogue.
 
 ## Identifiers are marketplace-scoped
 
