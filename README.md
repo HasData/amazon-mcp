@@ -9,12 +9,12 @@ It reads public Amazon pages that a signed-out visitor can see, on any of the 23
 **1,000 free credits every month, no card required**, which is 200 Amazon calls at the 5-credit rate.
 
 ```
-https://mcp.hasdata.com/api/mcp?apis=amazon
+https://mcp.hasdata.com/mcp?apis=amazon
 ```
 
 [![Glama score](https://glama.ai/mcp/servers/HasData/amazon-mcp/badges/score.svg)](https://glama.ai/mcp/servers/HasData/amazon-mcp)
 [![tool contract](https://github.com/HasData/amazon-mcp/actions/workflows/contract.yml/badge.svg)](https://github.com/HasData/amazon-mcp/actions/workflows/contract.yml)
-[![MCP](https://img.shields.io/badge/MCP-remote%20%7C%20streamable%20HTTP-6366f1?style=flat-square)](https://mcp.hasdata.com/api/mcp?apis=amazon)
+[![MCP](https://img.shields.io/badge/MCP-remote%20%7C%20streamable%20HTTP-6366f1?style=flat-square)](https://mcp.hasdata.com/mcp?apis=amazon)
 [![Tools](https://img.shields.io/badge/tools-4-10b981?style=flat-square)](#tools)
 [![npm](https://img.shields.io/npm/v/@hasdata/amazon-mcp?style=flat-square&logo=npm&label=npm&color=cb3837)](https://www.npmjs.com/package/@hasdata/amazon-mcp)
 [![PyPI](https://img.shields.io/pypi/v/hasdata-amazon-mcp?style=flat-square&logo=pypi&logoColor=white&label=PyPI&color=3775a9)](https://pypi.org/project/hasdata-amazon-mcp/)
@@ -46,7 +46,7 @@ The server URL is the same for every client. We run it hands-on in Claude Code a
 
 | Field | Value |
 | :--- | :--- |
-| URL | `https://mcp.hasdata.com/api/mcp?apis=amazon` |
+| URL | `https://mcp.hasdata.com/mcp?apis=amazon` |
 | Transport | HTTP, streamable |
 | Auth header | `x-api-key: HASDATA_API_KEY` |
 
@@ -56,7 +56,7 @@ Clients with OAuth support can add the same URL as a connector and sign in witho
 <summary><b>Claude Code</b></summary>
 
 ```bash
-claude mcp add --transport http amazon "https://mcp.hasdata.com/api/mcp?apis=amazon" \
+claude mcp add --transport http amazon "https://mcp.hasdata.com/mcp?apis=amazon" \
   --header "x-api-key: HASDATA_API_KEY"
 ```
 
@@ -65,7 +65,7 @@ claude mcp add --transport http amazon "https://mcp.hasdata.com/api/mcp?apis=ama
 <details>
 <summary><b>Claude Desktop</b></summary>
 
-Settings, then Connectors, then Add custom connector, then paste `https://mcp.hasdata.com/api/mcp?apis=amazon` and sign in.
+Settings, then Connectors, then Add custom connector, then paste `https://mcp.hasdata.com/mcp?apis=amazon` and sign in.
 
 For the config-file route, Claude Desktop loads only local (stdio) servers, so it reaches a remote server through a stdio launcher. The `@hasdata/amazon-mcp` package is that launcher, and it reads the key from the environment. Add this to `claude_desktop_config.json`:
 
@@ -106,7 +106,7 @@ For Python instead of Node, swap the launcher for the PyPI package, which `uvx` 
 {
   "mcpServers": {
     "amazon": {
-      "url": "https://mcp.hasdata.com/api/mcp?apis=amazon",
+      "url": "https://mcp.hasdata.com/mcp?apis=amazon",
       "headers": { "x-api-key": "HASDATA_API_KEY" }
     }
   }
@@ -124,7 +124,7 @@ For Python instead of Node, swap the launcher for the PyPI package, which `uvx` 
 {
   "mcpServers": {
     "amazon": {
-      "serverUrl": "https://mcp.hasdata.com/api/mcp?apis=amazon",
+      "serverUrl": "https://mcp.hasdata.com/mcp?apis=amazon",
       "headers": { "x-api-key": "HASDATA_API_KEY" }
     }
   }
@@ -143,7 +143,7 @@ For Python instead of Node, swap the launcher for the PyPI package, which `uvx` 
   "servers": {
     "amazon": {
       "type": "http",
-      "url": "https://mcp.hasdata.com/api/mcp?apis=amazon",
+      "url": "https://mcp.hasdata.com/mcp?apis=amazon",
       "headers": { "x-api-key": "HASDATA_API_KEY" }
     }
   }
