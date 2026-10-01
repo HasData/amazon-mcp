@@ -6,7 +6,7 @@ A hosted Model Context Protocol (MCP) server that gives Claude, Cursor, Windsurf
 
 It reads public Amazon pages that a signed-out visitor can see, on any of the 23 regional domains.
 
-**1,000 free credits every month, no card required**, which is 200 Amazon calls at the 5-credit rate.
+**1,000 free credits every month, no card required**, which is 100 Amazon calls at the 5-credit rate.
 
 ```
 https://mcp.hasdata.com/mcp?apis=amazon
@@ -169,13 +169,13 @@ A prompt that names a product rather than an ASIN takes two calls, one search to
 
 | Tool | What it returns |
 | --- | --- |
-| `hasdata_amazon_product_getProductDetails` | Title, brand, current/list/deal price, currency, availability, Buy Box seller, Prime eligibility, bullet points, A+ description, rating and review count, images,…. 5 credits a call |
-| `hasdata_amazon_reviews_getProductReviews` | Per-review title, body, star rating, author name and profile, review date, country, verified-purchase flag, helpful-vote count, variant/format attributes, and attached…. 5 credits a call |
-| `hasdata_amazon_search_getSearchResults` | The organic results list with ASIN, title, thumbnail, product URL, price and list price, currency, star rating, review count, Prime/sponsored flags, and position, plus…. 5 credits a call |
-| `hasdata_amazon_seller_getSellerDetails` | Business name, seller logo, About-this-seller text, overall feedback rating and lifetime/12-month/90-day/30-day rating breakdown, feedback count, business address and…. 5 credits a call |
-| `hasdata_amazon_seller_products_getSellerProducts` | Each product row with ASIN, title, image, product URL, price and list price, currency, star rating, review count, and Prime flag. 5 credits a call |
+| `hasdata_amazon_product_getProductDetails` | Title, brand, current/list/deal price, currency, availability, Buy Box seller, Prime eligibility, bullet points, A+ description, rating and review count, images,…. 10 credits a call |
+| `hasdata_amazon_reviews_getProductReviews` | Per-review title, body, star rating, author name and profile, review date, country, verified-purchase flag, helpful-vote count, variant/format attributes, and attached…. 10 credits a call |
+| `hasdata_amazon_search_getSearchResults` | The organic results list with ASIN, title, thumbnail, product URL, price and list price, currency, star rating, review count, Prime/sponsored flags, and position, plus…. 10 credits a call |
+| `hasdata_amazon_seller_getSellerDetails` | Business name, seller logo, About-this-seller text, overall feedback rating and lifetime/12-month/90-day/30-day rating breakdown, feedback count, business address and…. 10 credits a call |
+| `hasdata_amazon_seller_products_getSellerProducts` | Each product row with ASIN, title, image, product URL, price and list price, currency, star rating, review count, and Prime flag. 10 credits a call |
 
-Five tools, 5 credits per successful call. Every tool accepts `domain` to switch marketplace, one of 23 values, `www.amazon.com` through the European, Asian and other regional marketplaces, and `language` where the marketplace offers more than one.
+Five tools, 10 credits per successful call. Every tool accepts `domain` to switch marketplace, one of 23 values, `www.amazon.com` through the European, Asian and other regional marketplaces, and `language` where the marketplace offers more than one.
 
 ### Get Amazon search results
 
@@ -223,14 +223,14 @@ One product in full, by its ASIN.
 | :--- | :--- | :--- | :--- |
 | `asin` | string | yes | The Amazon Standard Identification Number |
 | `domain` | string | | Marketplace, defaults to `www.amazon.com` |
-| `otherSellers` | boolean | | Also collect competing offers. Costs 5 credits on top of the base, 10 instead of 5 |
+| `otherSellers` | boolean | | Also collect competing offers. Costs 10 credits on top of the base, 15 instead of 10 |
 | `deliveryZip` | string | | Postal code, which changes availability and delivery dates |
 | `shippingLocation` | string | | Two-letter country code for the delivery address |
 | `language` | string | | Marketplace language code |
 
 Returns a `product` object with `asin`, `url`, `title`, `brand`, `isAvailable`, `condition`, a `price` object, `primaryFeatures` and a wider `features` map, `featureBullets`, `description`, `variants`, `breadcrumbs`, `whatIsInTheBox`, image and video collections, `specification`, `reviewsInfo`, the delivery estimates, and the current `seller` with `sellerUrl`.
 
-The `price` object holds `currentPrice`, `beforePrice` when the item is discounted, `discount`, `priceFrom` and `otherOfferQuantity`. That last field is a count of competing offers, which the base call reports without fetching them. Ask for `otherSellers` only when the offers themselves are needed, because it doubles the price of the call.
+The `price` object holds `currentPrice`, `beforePrice` when the item is discounted, `discount`, `priceFrom` and `otherOfferQuantity`. That last field is a count of competing offers, which the base call reports without fetching them. Ask for `otherSellers` only when the offers themselves are needed, because it costs half again as much.
 
 ```json
 {
@@ -309,11 +309,11 @@ Results that carry data also carry a `requestMetadata.id` worth quoting in suppo
 
 ## Pricing, free tier and limits
 
-Each Amazon tool costs **5 credits per successful call**. Turning on `otherSellers` adds 5 credits to the product call, 10 instead of 5, so leave it off unless the competing offers are the point. Response size does not change the price.
+Each Amazon tool costs **10 credits per successful call**. Turning on `otherSellers` adds 5 credits to the product call, 15 instead of 10, so leave it off unless the competing offers are the point. Response size does not change the price.
 
-The free tier is **1,000 credits every month with no card**, which is 200 Amazon calls at the base rate. It renews with the billing cycle, so a low-volume agent runs on the free tier indefinitely.
+The free tier is **1,000 credits every month with no card**, which is 100 Amazon calls at the base rate. It renews with the billing cycle, so a low-volume agent runs on the free tier indefinitely.
 
-Paid plans start at **$59 a month** for 200,000 credits, which is 40,000 calls. The unit price falls with volume, from **$1.48 per 1,000 calls** on the entry plan to **$0.60** on Basic and **$0.41** across the Growth tiers. Current figures live on the [pricing page](https://hasdata.com/prices?utm_source=github&utm_medium=syndication&utm_campaign=amazon-mcp).
+Paid plans start at **$59 a month** for 200,000 credits, which is 20,000 calls. The unit price falls with volume, from **$1.48 per 1,000 calls** on the entry plan to **$0.60** on Basic and **$0.41** across the Growth tiers. Current figures live on the [pricing page](https://hasdata.com/prices?utm_source=github&utm_medium=syndication&utm_campaign=amazon-mcp).
 
 Your plan also sets concurrency. The free tier allows 1 request at a time, Startup 5, Basic 15, and the Growth tiers run from 50 to 500. Retry on the 429 with a backoff in anything unattended, because an agent that fans out across ASINs will reach the ceiling before you do.
 
@@ -338,7 +338,7 @@ Amazon's own Product Advertising API is the official route to this data, and it 
 | Scope | Items you are approved to advertise | Any public listing page |
 | Seller storefronts | Not returned | Two dedicated tools |
 | Search sorting | Limited set | The six orders Amazon shows a shopper |
-| Cost | Free, when you qualify | Paid past the free tier, 5 credits a call |
+| Cost | Free, when you qualify | Paid past the free tier, 10 credits a call |
 
 The row that decides it is eligibility. The Product Advertising API is built for affiliates and its access depends on sales you have already made, which rules it out for research, monitoring and anything an agent does on your behalf. When you do qualify and only need advertisable items, the official API is the better fit.
 
@@ -366,7 +366,7 @@ Amazon does not put them on the results page. The search tool returns what the p
 
 ### What does `otherOfferQuantity` mean?
 
-The number of other sellers offering the same item, as the product page reports it. It arrives with the base call. The offers themselves need `otherSellers`, which costs 5 credits more.
+The number of other sellers offering the same item, as the product page reports it. It arrives with the base call. The offers themselves need `otherSellers`, which costs 10 credits more.
 
 ### Can I use this together with other HasData APIs?
 
@@ -399,7 +399,7 @@ npm install
 HASDATA_API_KEY=your_key_here npm test
 ```
 
-The tests in `test/` assert the tool contract, the part that can break without a commit here. They check that `?apis=amazon` returns the expected tool count, that no name changed, that every tool still declares its required parameter and carries a description, and that the key in use is actually accepted. That last check calls a tool for real and costs 5 credits, which is the price of a canary that can fail for the right reason.
+The tests in `test/` assert the tool contract, the part that can break without a commit here. They check that `?apis=amazon` returns the expected tool count, that no name changed, that every tool still declares its required parameter and carries a description, and that the key in use is actually accepted. That last check calls a tool for real and costs 10 credits, which is the price of a canary that can fail for the right reason.
 
 One more test covers a tool this README does not document. The server also lists a reviews tool whose upstream endpoint is retired and answers with an error, so documenting it would send readers at a dead end. The test pins that state instead of ignoring it, and it fails the day the endpoint returns or the day the server drops the tool, which is when this README needs a decision.
 
