@@ -16,6 +16,7 @@ https://mcp.hasdata.com/mcp?apis=amazon
 [![tool contract](https://github.com/HasData/amazon-mcp/actions/workflows/contract.yml/badge.svg)](https://github.com/HasData/amazon-mcp/actions/workflows/contract.yml)
 [![MCP](https://img.shields.io/badge/MCP-remote%20%7C%20streamable%20HTTP-6366f1?style=flat-square)](https://mcp.hasdata.com/mcp?apis=amazon)
 [![Tools](https://img.shields.io/badge/tools-4-10b981?style=flat-square)](#tools)
+- [Prompts and resources](#prompts-and-resources)
 [![npm](https://img.shields.io/npm/v/@hasdata/amazon-mcp?style=flat-square&logo=npm&label=npm&color=cb3837)](https://www.npmjs.com/package/@hasdata/amazon-mcp)
 [![PyPI](https://img.shields.io/pypi/v/hasdata-amazon-mcp?style=flat-square&logo=pypi&logoColor=white&label=PyPI&color=3775a9)](https://pypi.org/project/hasdata-amazon-mcp/)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
@@ -290,6 +291,30 @@ A page of what one seller stocks.
 | `language` | string | | Marketplace language code |
 
 Returns `productResults` and `pagination`, shaped like the search tool's output. Each item carries `position`, `asin`, `title`, `url`, `price`, `image`, `reviews`, `badges`, `boughtInPastMonth`, `deliveryInfo` and `colorUrls`. Walk `pagination` to reach the rest of the catalogue rather than guessing page numbers.
+
+## Prompts and resources
+
+The server ships one prompt, a ready-made workflow a client can offer instead of making the user compose a tool call.
+
+| Prompt | What it does |
+| --- | --- |
+| `amazon_product_research` | Compare Amazon offers for a product by price, rating and review count. |
+
+Alongside them the server exposes 9 resources, one per parameter whose accepted values are a fixed list. Reading one is cheaper than learning the vocabulary from a rejected call, and it costs no credits. Each URI is `hasdata://amazon/<parameter>`.
+
+| Parameter | Values | What it selects |
+| --- | ---: | --- |
+| `domain` | 23 | Amazon domain to use. Default is www.amazon.com. |
+| `language` | 22 | Optional Amazon language code. Supported values depend on the selected domain. |
+| `shippingLocation` | 238 | The two-letter country code to define the country of the delivery address. |
+| `reviewerType` | 2 | The type of reviewers to filter. |
+| `stars` | 8 | The star ratings to filter reviews. |
+| `format` | 2 | The format type to filter reviews. Include reviews of any product format/variant or specifically to the current format/variant. |
+| `mediaType` | 2 | The media type to filter reviews. |
+| `sortBy` | 2 | The criterion to sort reviews. |
+| `sortBy` | 6 | Parameter used for sorting results |
+
+Both lists are served without an API key, so a client can read them before a user has signed up.
 
 ## Errors and failure paths
 
