@@ -6,7 +6,7 @@ A hosted Model Context Protocol (MCP) server that gives Claude, Cursor, Windsurf
 
 It reads public Amazon pages that a signed-out visitor can see, on any of the 23 regional domains.
 
-**1,000 free credits every month, no card required**, which is 100 Amazon calls at the 5-credit rate.
+**1,000 free credits every month, no card required**, which is 100 Amazon calls at the 10-credit rate.
 
 ```
 https://mcp.hasdata.com/mcp?apis=amazon
@@ -39,7 +39,7 @@ https://mcp.hasdata.com/mcp?apis=amazon
 
 ## What you need
 
-An MCP client and a HasData API key from the [dashboard](https://app.hasdata.com/sign-up?utm_source=github&utm_medium=syndication&utm_campaign=amazon-mcp), free to create with no card, and the free tier covers about 200 calls a month at the 5-credit rate. This is a remote server, so the simplest path is a URL and an `x-api-key` header, with no container to run. A client that only speaks stdio reaches it through a thin launcher, published as `@hasdata/amazon-mcp` on npm and `hasdata-amazon-mcp` on PyPI, shown below.
+An MCP client and a HasData API key from the [dashboard](https://app.hasdata.com/sign-up?utm_source=github&utm_medium=syndication&utm_campaign=amazon-mcp), free to create with no card, and the free tier covers about 100 calls a month at the 10-credit rate. This is a remote server, so the simplest path is a URL and an `x-api-key` header, with no container to run. A client that only speaks stdio reaches it through a thin launcher, published as `@hasdata/amazon-mcp` on npm and `hasdata-amazon-mcp` on PyPI, shown below.
 
 ## Quick start
 
