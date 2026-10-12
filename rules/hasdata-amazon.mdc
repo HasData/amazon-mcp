@@ -20,3 +20,9 @@ Five tools. `hasdata_amazon_search_getSearchResults` takes a query, the other fo
 A search that matches nothing returns a successful result with an empty `productResults` array, so branch on length rather than waiting for an error. A live listing can come back without a usable `currentPrice` when the item is out of stock or sold only through other sellers, so treat the price as optional and say so instead of printing zero.
 
 The reviews tool pages and filters: `stars`, `reviewerType`, `mediaType` and `sortBy` narrow the set at no extra cost, which beats pulling everything and filtering afterwards.
+
+## Prompts and resources
+
+The server also serves resources that spell out the accepted values of every parameter that takes a fixed list, each one at `hasdata://amazon/<parameter>`. Reading one spends no credits and makes no upstream request, which beats discovering the vocabulary from a rejected call. Listing them needs no API key either, so a client can read them before the user has connected an account.
+
+Ready-made prompts cover the usual workflows. Offer one of those before composing a tool call by hand.
